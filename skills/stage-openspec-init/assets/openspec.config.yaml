@@ -1,0 +1,46 @@
+schema: spec-driven
+
+# Replace {{PROJECT_LANGUAGE}} with the project's primary language (for example English or 简体中文).
+context: |
+  Project: {{PROJECT_NAME}}（{{PROJECT_DOMAIN}}）。
+  Language: {{PROJECT_LANGUAGE}}；All artifacts must be written in {{PROJECT_LANGUAGE}}.
+  Keep OpenSpec structural headings and SHALL/MUST keywords in English.
+  Current stage: {{CURRENT_STAGE}}.
+  Target design: doc/architecture.md. Stage scope/AC: doc/stages/. Workflow: doc/workflow/RUNBOOK.md.
+  Behavior contracts belong in openspec/specs; changes belong in openspec/changes.
+  Do not treat scaffold code, synthetic fixtures or local tests as production evidence.
+
+rules:
+  proposal:
+    - State why now, what changes, what is explicitly out of scope, and impact.
+    - Do not copy Stage AC IDs into capability names or requirement headings; reference the Stage brief instead.
+    - Keep the proposal concise; behavior detail belongs in delta specs.
+  specs:
+    - Write one observable behavior per requirement; use SHALL/MUST and at least one WHEN/THEN scenario.
+    - Do not include implementation details, file paths, class names or internal algorithms in requirements.
+    - Do not use Stage AC IDs as capability names or permanent requirement identifiers.
+    - New capabilities need a Purpose of at least 50 characters.
+    - Prefer several focused requirements over one requirement that bundles unrelated gates.
+  design:
+    - Record decisions, alternatives considered, trade-offs, risks and migration/rollback.
+    - Only include design when the change has cross-cutting, data, interface or dependency decisions.
+    - Do not restate the full specs; link to the behavior contract.
+  tasks:
+    - Group tasks by deliverable and make each task independently verifiable.
+    - Every task must state how it is verified; do not mark a task complete without evidence.
+    - Separate planning/documentation tasks from implementation and real-data acceptance.
+    - Do not hide unresolved decisions in tasks; record them in design or the Stage brief.
+
+operations:
+  apply:
+    guidance:
+      - Read the change's proposal, specs, design, tasks and traceability before coding.
+      - Implement in dependency order; update task checkboxes only after verification.
+      - Keep tests for success, invalid input and key rejection paths; never delete assertions to pass a gate.
+      - Do not archive, approve a Stage exit, or claim production readiness during apply.
+  archive:
+    guidance:
+      - Run `openspec validate --all --strict` and confirm every task has evidence.
+      - Check traceability from Stage AC to requirement/scenario/evidence; mark unverified real-data ACs as not passed.
+      - Summarize changed capabilities, evidence, deviations and remaining risks before archiving.
+      - Archiving a change is not Stage exit; Stage exit still requires the Stage report, document sync and user confirmation.

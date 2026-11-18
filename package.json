@@ -1,0 +1,14 @@
+{
+  "name": "stage-openspec-skills",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Repo-local coding-agent skills for a two-level Stage + OpenSpec delivery workflow.",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=22.20.0"
+  },
+  "scripts": {
+    "check": "node scripts/check-skills.mjs"
+  }
+}
