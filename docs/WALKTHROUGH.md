@@ -109,7 +109,7 @@ script still references `openspec/templates/`.
 ### 1. Ask for an audit
 
 ```text
-Use project-bootstrap to audit this repository's Stage/OpenSpec governance.
+Use stage-project-bootstrap to audit this repository's Stage/OpenSpec governance.
 Do not create missing files. Report:
 area | finding | severity | proposed action
 Check links, commands, Stage/OpenSpec status, deprecated template-copy flows,
@@ -135,7 +135,7 @@ Apply only the minimal repair plan. Show the diff before deleting anything.
 After the edits, run openspec validate --all --strict and git diff --check.
 ```
 
-If the governance layer is missing entirely, `project-bootstrap` should stop
+If the governance layer is missing entirely, `stage-project-bootstrap` should stop
 and hand off to `stage-openspec-init` rather than creating a new layer.
 
 ## What good looks like

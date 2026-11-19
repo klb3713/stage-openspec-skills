@@ -69,14 +69,14 @@ human review remain authoritative.
 | Skill | Responsibility | Boundary |
 |---|---|---|
 | `stage-openspec-init` | Detect the toolchain; create a minimal governance skeleton and one first change; validate it | No product code; no Stage approval; no archive |
-| `project-bootstrap` | Audit an existing governance layer; make the smallest repair to stale links, commands, or status | No new governance layer; no history rewrite; no bulk Stages |
+| `stage-project-bootstrap` | Audit an existing governance layer; make the smallest repair to stale links, commands, or status | No new governance layer; no history rewrite; no bulk Stages |
 | `stage-change-workflow` | Classify work; create/continue/archive a change; prepare a Stage exit | No automatic approval, archive, or exit; no fake evidence |
 
 The handoffs are deliberate:
 
 ```text
 new/ungoverned repo        -> stage-openspec-init
-governed but drifted repo  -> project-bootstrap
+governed but drifted repo  -> stage-project-bootstrap
 daily work                 -> stage-change-workflow
 ```
 

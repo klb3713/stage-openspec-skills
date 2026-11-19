@@ -4,6 +4,13 @@ All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the project uses
 semantic versioning for skill contracts.
 
+## [Unreleased]
+
+### Changed
+
+- Renamed `project-bootstrap` to `stage-project-bootstrap` to make its Stage
+  layer role explicit. The skill contract is unchanged.
+
 ## [0.1.0] - 2026-11-19
 
 ### Added

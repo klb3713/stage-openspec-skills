@@ -20,7 +20,7 @@ does not install OpenSpec without approval.
 ### Per project (recommended)
 
 ```bash
-git clone https://github.com/<your-org>/stage-openspec-skills.git
+git clone https://github.com/klb3713/stage-openspec-skills.git
 cd /path/to/your-project
 mkdir -p .claude/skills
 cp -R /path/to/stage-openspec-skills/skills/* .claude/skills/
@@ -33,7 +33,7 @@ For a live checkout instead of a copy:
 
 ```bash
 ln -s /path/to/stage-openspec-skills/skills/stage-openspec-init .claude/skills/stage-openspec-init
-ln -s /path/to/stage-openspec-skills/skills/project-bootstrap .claude/skills/project-bootstrap
+ln -s /path/to/stage-openspec-skills/skills/stage-project-bootstrap .claude/skills/stage-project-bootstrap
 ln -s /path/to/stage-openspec-skills/skills/stage-change-workflow .claude/skills/stage-change-workflow
 ```
 
@@ -115,7 +115,7 @@ Remove the copied skill directories:
 
 ```bash
 rm -rf .claude/skills/stage-openspec-init
-rm -rf .claude/skills/project-bootstrap
+rm -rf .claude/skills/stage-project-bootstrap
 rm -rf .claude/skills/stage-change-workflow
 ```
 

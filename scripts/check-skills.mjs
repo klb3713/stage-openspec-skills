@@ -22,7 +22,7 @@ const requiredFiles = {
     "references/profiles.md",
     "references/toolchain.md",
   ],
-  "project-bootstrap": [],
+  "stage-project-bootstrap": [],
   "stage-change-workflow": [],
 };
 

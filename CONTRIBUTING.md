@@ -56,7 +56,7 @@ Run it before opening a pull request. CI runs the same command on Node 22.
 
 - [ ] The change explains the user problem, not only the edited text.
 - [ ] Skill descriptions still trigger at the right moment.
-- [ ] Handoffs between `stage-openspec-init`, `project-bootstrap`, and `stage-change-workflow` remain unambiguous.
+- [ ] Handoffs between `stage-openspec-init`, `stage-project-bootstrap`, and `stage-change-workflow` remain unambiguous.
 - [ ] No secret, real customer data, absolute path, or fake evidence was added.
 - [ ] `node scripts/check-skills.mjs` passes.
 - [ ] README / README.zh-CN / docs are updated when behavior changes.

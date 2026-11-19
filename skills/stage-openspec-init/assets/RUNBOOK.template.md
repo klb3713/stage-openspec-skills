@@ -168,7 +168,7 @@ openspec status --change <change-name>
 ## 11. 技能分工
 
 - `stage-openspec-init`：从零建立治理（本文件就是它生成的）。
-- `project-bootstrap`：审计/修复已有治理。
+- `stage-project-bootstrap`：审计/修复已有治理。
 - `stage-change-workflow`：日常分类、artifacts、门禁。
 
 技能只是操作助手；规则以仓库文件为准。

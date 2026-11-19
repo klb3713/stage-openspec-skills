@@ -118,7 +118,7 @@ openspec archive <change-name>
 技能是操作助手，不是规则、授权或状态真源：
 
 - `stage-openspec-init`：从零/治理不完整项目建立 Stage + OpenSpec 骨架。
-- `project-bootstrap`：审计/修复已有治理，不负责从零初始化。
+- `stage-project-bootstrap`：审计/修复已有治理，不负责从零初始化。
 - `stage-change-workflow`：判断 Stage/change/Fast Track，生成 artifacts，执行门禁。
 
 其他技能按需加载；不得用技能输出替代本文件或 OpenSpec 规格。

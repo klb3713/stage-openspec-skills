@@ -4,6 +4,22 @@
   "private": true,
   "description": "Repo-local coding-agent skills for a two-level Stage + OpenSpec delivery workflow.",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/klb3713/stage-openspec-skills.git"
+  },
+  "homepage": "https://github.com/klb3713/stage-openspec-skills#readme",
+  "bugs": {
+    "url": "https://github.com/klb3713/stage-openspec-skills/issues"
+  },
+  "keywords": [
+    "openspec",
+    "spec-driven-development",
+    "coding-agents",
+    "claude-code",
+    "codex",
+    "workflow"
+  ],
   "type": "module",
   "engines": {
     "node": ">=22.20.0"

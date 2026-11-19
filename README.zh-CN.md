@@ -31,7 +31,7 @@
 | Skill | 用途 | 不会做 |
 |---|---|---|
 | [`stage-openspec-init`](skills/stage-openspec-init/SKILL.md) | 为新仓库/治理不完整仓库建立 Stage + OpenSpec 骨架；检测并引导安装 OpenSpec | 写业务代码、批准 Stage、自动 archive 或 commit |
-| [`project-bootstrap`](skills/project-bootstrap/SKILL.md) | 审计并最小修复已有治理层的文档/命令/状态漂移 | 新建治理层、批量建 Stage、实现功能 |
+| [`stage-project-bootstrap`](skills/stage-project-bootstrap/SKILL.md) | 审计并最小修复已有治理层的文档/命令/状态漂移 | 新建治理层、批量建 Stage、实现功能 |
 | [`stage-change-workflow`](skills/stage-change-workflow/SKILL.md) | 判断 Stage/change/Fast Track；生成 artifacts；执行评审、实施、归档门禁 | 自动批准、自动归档、自动 Stage 退出、伪造证据 |
 
 `stage-openspec-init` 是入口，另外两个负责日常操作和修复。
@@ -52,7 +52,7 @@ init skill 会先检测工具链。缺少 OpenSpec 时给出精确安装命令�
 ### Claude Code
 
 ```bash
-git clone https://github.com/<your-org>/stage-openspec-skills.git
+git clone https://github.com/klb3713/stage-openspec-skills.git
 cd /path/to/your-project
 mkdir -p .claude/skills
 cp -R /path/to/stage-openspec-skills/skills/* .claude/skills/
@@ -117,7 +117,7 @@ openspec doctor
 ### 已有仓库
 
 ```text
-使用 project-bootstrap 审计这个仓库的 Stage/OpenSpec 治理。
+使用 stage-project-bootstrap 审计这个仓库的 Stage/OpenSpec 治理。
 用表格报告：area | finding | severity | proposed action。
 不要创建缺失的治理文件；治理层不存在时交给 stage-openspec-init。
 不要重写历史或批量建 Stage。
@@ -167,7 +167,7 @@ skills/
     SKILL.md
     assets/            # 复制到目标仓库的模板
     references/        # 工具链与档位说明
-  project-bootstrap/
+  stage-project-bootstrap/
     SKILL.md
   stage-change-workflow/
     SKILL.md

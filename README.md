@@ -29,7 +29,7 @@ A Stage can contain several changes. A change can stand alone when it does not n
 | Skill | Use it for | It will not |
 |---|---|---|
 | [`stage-openspec-init`](skills/stage-openspec-init/SKILL.md) | Create a Stage + OpenSpec governance skeleton in a new or ungoverned repository; detect and guide OpenSpec installation | Write product code, approve a Stage, archive a change, or commit automatically |
-| [`project-bootstrap`](skills/project-bootstrap/SKILL.md) | Audit and minimally repair an existing governance layer whose docs, commands, or status have drifted | Create a new governance layer, bulk-create Stages, or implement features |
+| [`stage-project-bootstrap`](skills/stage-project-bootstrap/SKILL.md) | Audit and minimally repair an existing governance layer whose docs, commands, or status have drifted | Create a new governance layer, bulk-create Stages, or implement features |
 | [`stage-change-workflow`](skills/stage-change-workflow/SKILL.md) | Classify work as Stage/change/Fast Track; create artifacts; run review, implementation, and archive gates | Auto-approve, auto-archive, auto-exit a Stage, or fake evidence |
 
 `stage-openspec-init` is the entry point. The other two are the daily operators and the repair path.
@@ -50,7 +50,7 @@ The skills are **repo-local**. There is no global package to install.
 ### Claude Code
 
 ```bash
-git clone https://github.com/<your-org>/stage-openspec-skills.git
+git clone https://github.com/klb3713/stage-openspec-skills.git
 cd /path/to/your-project
 mkdir -p .claude/skills
 cp -R /path/to/stage-openspec-skills/skills/* .claude/skills/
@@ -115,7 +115,7 @@ Do not write code until I approve the plan.
 ### Existing repository
 
 ```text
-Use project-bootstrap to audit this repository's Stage/OpenSpec governance.
+Use stage-project-bootstrap to audit this repository's Stage/OpenSpec governance.
 Report drift as a table: area | finding | severity | proposed action.
 Do not create missing governance files; hand off to stage-openspec-init if the layer is absent.
 Do not rewrite history or bulk-create Stages.
@@ -165,7 +165,7 @@ skills/
     SKILL.md
     assets/            # template files copied into the target repo
     references/        # toolchain and profile details
-  project-bootstrap/
+  stage-project-bootstrap/
     SKILL.md
   stage-change-workflow/
     SKILL.md

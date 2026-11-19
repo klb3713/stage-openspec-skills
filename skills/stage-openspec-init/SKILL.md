@@ -1,6 +1,6 @@
 ---
 name: stage-openspec-init
-description: Establish a minimal Stage + OpenSpec governance skeleton for a new or ungoverned repository. Use when the user asks to initialize Stage/OpenSpec governance, create AGENTS/CLAUDE/RUNBOOK/Stage 0/Stage 1 from scratch, or adopt governance in a repository that has no coherent Stage/OpenSpec layer. Do not use for ordinary feature implementation, daily change work, or repairing an already-governed repository (use project-bootstrap).
+description: Establish a minimal Stage + OpenSpec governance skeleton for a new or ungoverned repository. Use when the user asks to initialize Stage/OpenSpec governance, create AGENTS/CLAUDE/RUNBOOK/Stage 0/Stage 1 from scratch, or adopt governance in a repository that has no coherent Stage/OpenSpec layer. Do not use for ordinary feature implementation, daily change work, or repairing an already-governed repository (use stage-project-bootstrap).
 ---
 
 # Stage OpenSpec Init
@@ -24,7 +24,7 @@ Use for:
 Do not use for:
 
 - adding a feature or fixing a bug (use `stage-change-workflow`);
-- auditing or repairing a repository that already has a coherent governance layer (use `project-bootstrap`);
+- auditing or repairing a repository that already has a coherent governance layer (use `stage-project-bootstrap`);
 - copying an existing scaffold (use `fullstack-project-init` first);
 - approving a Stage, archiving a change, or claiming production readiness.
 
@@ -49,7 +49,7 @@ Do not use for:
 | `new` | Empty repository or fresh scaffold; no coherent Stage/OpenSpec layer | standard |
 | `adopt` | Existing code and partial docs; governance missing or contradictory | standard |
 
-If the repository already has a coherent Stage/OpenSpec layer, stop and hand off to `project-bootstrap` for audit/repair.
+If the repository already has a coherent Stage/OpenSpec layer, stop and hand off to `stage-project-bootstrap` for audit/repair.
 
 ## Workflow
 

@@ -1,5 +1,5 @@
 ---
-name: project-bootstrap
+name: stage-project-bootstrap
 description: Audit and repair an existing, already-governed Stage + OpenSpec repository so Stage documents, OpenSpec, agent rules and commands agree. Use when governance exists but is stale or inconsistent, deprecated OpenSpec workflows are still referenced, or docs/commands have drifted. Do not use to create a new governance layer (use stage-openspec-init) or for ordinary feature implementation.
 ---
 

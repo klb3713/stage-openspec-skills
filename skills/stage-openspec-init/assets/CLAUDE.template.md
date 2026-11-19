@@ -20,7 +20,7 @@
 ## 可用技能
 
 - `stage-openspec-init`：从零/治理不完整项目建立 Stage + OpenSpec 骨架。
-- `project-bootstrap`：审计/修复已有治理。
+- `stage-project-bootstrap`：审计/修复已有治理。
 - `stage-change-workflow`：判断 Stage/change/Fast Track，生成 artifacts，执行门禁。
 
 技能只是操作助手；规则真源仍是 `AGENTS.md`、`openspec/config.yaml` 和已归档的 `openspec/specs/`。
