@@ -95,6 +95,18 @@ If `openspec --version` is missing or not 2.1.0, stop before `openspec list` and
 
 ### 3. Create the change
 
+Name the directory before creating it. OpenSpec does not validate names, so the convention must be applied here:
+
+| Change type | Directory name | Example |
+|---|---|---|
+| Capability/behavior change | `<domain>-<object>`, kebab-case, **no Stage prefix** | `quality-item-catalog`, `remote-quality-execution` |
+| Stage-only support change that creates no capability (environment, tooling, pure governance) | `stage-<n>-<purpose>` | `stage-1-dev-environment` |
+
+- The name describes the behavior boundary, not implementation details, class names, file paths, or AC IDs.
+- Stage ownership is recorded in the Stage brief change map, `traceability.md`, and the roadmap — not encoded in the directory name. A prefix would become misleading after a cross-Stage correction.
+- The change name and the capability name may match or differ; state the mapping in `proposal.md`/`traceability.md`.
+- Never rename an existing change directory to enforce this convention; that breaks every reference. Apply it only to newly created changes.
+
 ```bash
 openspec new change <change-name>
 openspec instructions proposal --change <change-name>

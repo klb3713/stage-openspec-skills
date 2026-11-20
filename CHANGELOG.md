@@ -16,6 +16,9 @@ semantic versioning for skill contracts.
 - Added cross-Stage correction routing and a checklist to
   `stage-change-workflow`, so defects in an exited Stage are handled as a
   correction change or a Stage amendment instead of rewriting history.
+- Added a change directory naming convention to `stage-change-workflow` and
+  the RUNBOOK template: behavior/capability changes use a behavior name with
+  no Stage prefix; Stage ownership stays in the brief/traceability/roadmap.
 
 ## [0.1.0] - 2026-11-19
 

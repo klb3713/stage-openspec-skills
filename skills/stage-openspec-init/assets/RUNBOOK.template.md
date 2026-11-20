@@ -70,7 +70,16 @@ Stage brief 不写行为细节；行为放 change 的 delta specs。
 ## 5. OpenSpec change 生命周期
 
 1. **分类**：行为变化走 change；行为不变走 Fast Track；新模块/跨域/新边界走 Stage。
-2. **创建**：
+2. **命名**：OpenSpec 不校验 change 目录名，创建前先按约定命名：
+
+   | 类型 | 目录名 | 例子 |
+   | --- | --- | --- |
+   | 能力/行为 change | `<领域>-<对象>`，kebab-case，**不带 Stage 前缀** | `quality-item-catalog`、`remote-quality-execution` |
+   | 只属于某个 Stage、不产生 capability 的支撑 change（环境、工具、纯治理） | `stage-<n>-<用途>` | `stage-1-dev-environment` |
+
+   名字描述行为边界，不写类名、文件路径、AC 编号；Stage 归属写在 Stage brief 变更清单、traceability 和路线图里，不编码进目录名，否则跨 Stage 修复后名字会说谎。change 名与 capability 名可以相同或不同，但要在 `proposal.md`/`traceability.md` 说明映射。已存在的 change 不为了统一而重命名，会断掉引用；新约定只用于新建 change。
+
+3. **创建**：
 
 ```bash
 openspec new change <change-name>
@@ -80,7 +89,7 @@ openspec instructions design --change <change-name>
 openspec instructions tasks --change <change-name>
 ```
 
-3. **写 artifacts**：
+4. **写 artifacts**：
 
 - `proposal.md`：为什么现在做、改什么、不做什么、capabilities、影响；
 - `specs/<capability>/spec.md`：ADDED/MODIFIED/REMOVED Requirements；每条 requirement 至少一个 WHEN/THEN scenario；
@@ -88,9 +97,9 @@ openspec instructions tasks --change <change-name>
 - `tasks.md`：可独立验证的任务，每条写验证方式；
 - `traceability.md`：Stage AC → requirement/scenario → 计划证据。
 
-4. **评审**：用户/负责人确认后才能实施；“artifacts 存在”不是实施授权。
-5. **实施**：按依赖顺序；只有验证通过才勾选 task。
-6. **归档**：
+5. **评审**：用户/负责人确认后才能实施；“artifacts 存在”不是实施授权。
+6. **实施**：按依赖顺序；只有验证通过才勾选 task。
+7. **归档**：
 
 ```bash
 openspec validate --all --strict
