@@ -39,6 +39,38 @@ Decide the correct lane, create the required artifacts, enforce the two-level ga
 
 If the request touches auth, authorization, public API, data semantics, schema migration, security boundary or an approved Stage contract, prefer a change and request review. Do not silently expand scope.
 
+#### Cross-Stage corrections
+
+When a later Stage finds a defect in an earlier, already-exited Stage, classify it before editing anything:
+
+| Situation | Route | Reopen the old Stage? |
+|---|---|---|
+| The original AC is still correct; the implementation is wrong | Correction change; use `skip_specs: true` when the capability spec already states the behavior | No |
+| The original AC is wrong, incomplete, or unsafe | Stage amendment/correction brief with explicit owner approval, then a change with delta specs | Yes, or mark it corrective |
+| The request is new behavior | Ordinary change under the current/next Stage | No |
+| Only docs, commands, or status drifted | `stage-project-bootstrap` repair or Fast Track | No |
+| The old exit evidence is invalid | Downgrade the Stage status, create a corrective plan, and re-run the exit gate | Yes |
+
+Correction rules:
+
+- Record `Origin: Stage X / AC / change / commit` in `proposal.md`.
+- Analyze impact on the current and later Stages; block dependent work if the defect invalidates its assumptions.
+- Add a failing regression test before the fix; verify the old AC plus the regression.
+- Do not rewrite archived change artifacts or make the old Stage report look correct in hindsight.
+- Keep `exited` only when the original exit evidence remains valid; otherwise update the roadmap and report the downgrade.
+- If the original AC is invalid, stop and get explicit owner/user approval before changing the contract.
+
+Correction checklist:
+
+- [ ] Origin Stage/AC/change/commit recorded.
+- [ ] Impact on current and later Stages analyzed.
+- [ ] Correction change vs Stage amendment chosen and approved.
+- [ ] Regression test failed before the fix.
+- [ ] Delta spec or `skip_specs: true` justified.
+- [ ] Traceability maps the origin AC to new evidence.
+- [ ] Correction report and roadmap post-exit note prepared.
+- [ ] Old exit evidence revalidated, or Stage status downgraded.
+
 ### 2. Preflight
 
 Run and read:
@@ -70,7 +102,7 @@ openspec instructions proposal --change <change-name>
 
 Complete artifacts in order:
 
-1. `proposal.md`: why now, what changes, out of scope, capabilities, impact.
+1. `proposal.md`: why now, what changes, out of scope, capabilities, impact. For a correction, include the origin Stage/AC/change/commit.
 2. `specs/<capability>/spec.md`: `## ADDED/MODIFIED/REMOVED Requirements`; each requirement uses SHALL/MUST and has at least one WHEN/THEN scenario.
 3. `design.md`: only when there are cross-cutting, data, interface, dependency or migration decisions. Record alternatives, trade-offs, risks, migration/rollback.
 4. `tasks.md`: grouped, independently verifiable tasks; each states its verification.
@@ -118,6 +150,7 @@ Check:
 - traceability has evidence, not just links;
 - real-data ACs are either evidenced or marked not passed;
 - deviations and residual risks are recorded;
+- for a correction, the correction report and roadmap post-exit note are ready;
 - main spec updates and document links are ready.
 
 Then ask for confirmation before:

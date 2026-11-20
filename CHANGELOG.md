@@ -13,6 +13,9 @@ semantic versioning for skill contracts.
 - Added a shared language policy and Chinese trigger phrases to all three
   skills, plus a Chinese glossary, so Chinese requests route correctly while
   generated project documents follow the project language.
+- Added cross-Stage correction routing and a checklist to
+  `stage-change-workflow`, so defects in an exited Stage are handled as a
+  correction change or a Stage amendment instead of rewriting history.
 
 ## [0.1.0] - 2026-11-19
 
