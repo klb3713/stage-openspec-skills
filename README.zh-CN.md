@@ -45,6 +45,17 @@
 
 init skill 会先检测工具链。缺少 OpenSpec 时给出精确安装命令并等待确认；不会静默安装、升级，也不会用 `sudo`/`latest`。
 
+## 语言策略
+
+skill 用英文编写，英文是唯一权威指令，不维护第二份全文翻译，避免规则漂移。
+
+- **回复跟随用户。** 中文请求用中文回复。
+- **生成文档跟随项目。** `stage-openspec-init` 按项目主语言生成 `AGENTS.md`、`RUNBOOK.md`、Stage brief 和 change 正文；中文项目通常使用中文。
+- **OpenSpec 结构保持英文。** `## ADDED Requirements`、`SHALL`/`MUST`、CLI 命令、文件路径和代码标识符不翻译。
+- **已加入中文触发词。** 每个 skill 的 `description` 末尾都有中文触发语，例如“建立 Stage/OpenSpec 治理”“准备归档”，中文请求不需要全文翻译也能正确路由。
+
+术语统一见 [中文术语表](docs/GLOSSARY.zh-CN.md)。
+
 ## 安装
 
 这些 skill 是 **repo-local** 的，没有全局安装包。
@@ -173,6 +184,7 @@ skills/
     SKILL.md
 docs/
   DESIGN.md
+  GLOSSARY.zh-CN.md
   WALKTHROUGH.md
   installation.md
 scripts/

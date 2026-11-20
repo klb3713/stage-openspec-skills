@@ -209,6 +209,7 @@ async function main() {
     "CONTRIBUTING.md",
     "CHANGELOG.md",
     "docs/DESIGN.md",
+    "docs/GLOSSARY.zh-CN.md",
     "docs/installation.md",
     "docs/WALKTHROUGH.md",
   ];

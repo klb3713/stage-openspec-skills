@@ -43,6 +43,17 @@ A Stage can contain several changes. A change can stand alone when it does not n
 
 The init skill detects the toolchain first. If OpenSpec is missing, it gives an exact install command and waits for approval; it does not silently install, upgrade, or use `sudo`/`latest`.
 
+## Language
+
+The skills are written in English. That is the canonical instruction language; there is no separate full translation that could drift.
+
+- **Replies follow the user.** A Chinese request gets a Chinese reply.
+- **Generated documents follow the project.** `stage-openspec-init` writes `AGENTS.md`, `RUNBOOK.md`, Stage briefs, and change prose in the project's primary language (set in `openspec/config.yaml`). Chinese projects normally use Chinese for these files.
+- **OpenSpec structure stays English.** Headings such as `## ADDED Requirements`, `SHALL`/`MUST`, CLI commands, file paths, and identifiers are not translated.
+- **Chinese triggers are included.** Each skill's `description` ends with Chinese trigger phrases such as `建立 Stage/OpenSpec 治理` or `准备归档`, so Chinese requests route correctly without a full translated copy.
+
+See the [Chinese glossary](docs/GLOSSARY.zh-CN.md) for the terminology used in this repository.
+
 ## Install
 
 The skills are **repo-local**. There is no global package to install.
@@ -171,6 +182,7 @@ skills/
     SKILL.md
 docs/
   DESIGN.md
+  GLOSSARY.zh-CN.md
   WALKTHROUGH.md
   installation.md
 scripts/

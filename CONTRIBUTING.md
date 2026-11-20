@@ -36,6 +36,7 @@ Rules:
 4. `assets/` may contain destination-relative links and `{{PLACEHOLDER}}` values; that is intentional.
 5. Do not add a `scripts/` wrapper for OpenSpec. Use the official CLI.
 6. Do not add project names, company names, or `/Users/...` paths to a reusable skill.
+7. Keep `SKILL.md` in English. Append Chinese trigger phrases to the description and include a `Language policy` section; do not add a second translated `SKILL.md`.
 
 ## Validate
 
@@ -56,6 +57,7 @@ Run it before opening a pull request. CI runs the same command on Node 22.
 
 - [ ] The change explains the user problem, not only the edited text.
 - [ ] Skill descriptions still trigger at the right moment.
+- [ ] `SKILL.md` remains English, with Chinese trigger phrases and a `Language policy`; generated documents follow the project language.
 - [ ] Handoffs between `stage-openspec-init`, `stage-project-bootstrap`, and `stage-change-workflow` remain unambiguous.
 - [ ] No secret, real customer data, absolute path, or fake evidence was added.
 - [ ] `node scripts/check-skills.mjs` passes.

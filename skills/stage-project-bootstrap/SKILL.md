@@ -1,6 +1,6 @@
 ---
 name: stage-project-bootstrap
-description: Audit and repair an existing, already-governed Stage + OpenSpec repository so Stage documents, OpenSpec, agent rules and commands agree. Use when governance exists but is stale or inconsistent, deprecated OpenSpec workflows are still referenced, or docs/commands have drifted. Do not use to create a new governance layer (use stage-openspec-init) or for ordinary feature implementation.
+description: Audit and repair an existing, already-governed Stage + OpenSpec repository so Stage documents, OpenSpec, agent rules and commands agree. Use when governance exists but is stale or inconsistent, deprecated OpenSpec workflows are still referenced, or docs/commands have drifted. Do not use to create a new governance layer (use stage-openspec-init) or for ordinary feature implementation. 中文触发：审计或修复已有 Stage 与 OpenSpec 治理、清理旧模板或脚本引用、对齐文档命令和状态。
 ---
 
 # Project Bootstrap
@@ -8,6 +8,13 @@ description: Audit and repair an existing, already-governed Stage + OpenSpec rep
 ## Overview
 
 Audit the repository first, then propose a minimal repair diff. This skill repairs an existing governance layer; it does not create a new Stage/OpenSpec skeleton, implement business features, approve a Stage, or replace repository rules. If the repository has no coherent governance layer, stop and hand off to `stage-openspec-init`.
+
+## Language policy
+
+- Reply in the language the user writes in. If the user writes Chinese, reply in Chinese.
+- Write generated repository documents in the project's primary language (see `openspec/config.yaml`). For a Chinese project, audit reports, repair diffs, and `AGENTS.md`/`RUNBOOK.md` prose are normally Chinese.
+- Keep OpenSpec structural headings, `SHALL`/`MUST`, CLI commands, file paths, and code identifiers in English.
+- Do not translate skill names, command names, or file paths.
 
 ## Guardrails
 

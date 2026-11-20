@@ -10,6 +10,9 @@ semantic versioning for skill contracts.
 
 - Renamed `project-bootstrap` to `stage-project-bootstrap` to make its Stage
   layer role explicit. The skill contract is unchanged.
+- Added a shared language policy and Chinese trigger phrases to all three
+  skills, plus a Chinese glossary, so Chinese requests route correctly while
+  generated project documents follow the project language.
 
 ## [0.1.0] - 2026-11-19
 

@@ -1,6 +1,6 @@
 ---
 name: stage-change-workflow
-description: Guide repository work through the Stage/OpenSpec process and produce the required planning artifacts. Use when starting or continuing a feature, behavior-changing bug fix, Stage slice, OpenSpec change, traceability update, archive preparation, or Stage exit review. Also use when the user asks whether work should be a Stage, a change, or Fast Track. Never approves, archives or declares Stage exit without explicit user confirmation.
+description: Guide repository work through the Stage/OpenSpec process and produce the required planning artifacts. Use when starting or continuing a feature, behavior-changing bug fix, Stage slice, OpenSpec change, traceability update, archive preparation, or Stage exit review. Also use when the user asks whether work should be a Stage, a change, or Fast Track. Never approves, archives or declares Stage exit without explicit user confirmation. 中文触发：判断 Stage/change/Fast Track、创建或继续 change、更新追溯矩阵、准备归档或阶段退出。
 ---
 
 # Stage Change Workflow
@@ -8,6 +8,13 @@ description: Guide repository work through the Stage/OpenSpec process and produc
 ## Overview
 
 Decide the correct lane, create the required artifacts, enforce the two-level gates, and stop before unauthorized implementation or archive. Read repository rules first; this skill does not replace them.
+
+## Language policy
+
+- Reply in the language the user writes in. If the user writes Chinese, reply in Chinese.
+- Write generated repository documents in the project's primary language (see `openspec/config.yaml`). For a Chinese project, change proposals, task notes, reports, and traceability prose are normally Chinese.
+- Keep OpenSpec structural headings, `SHALL`/`MUST`, CLI commands, file paths, and code identifiers in English.
+- Do not translate skill names, command names, or file paths.
 
 ## Guardrails
 

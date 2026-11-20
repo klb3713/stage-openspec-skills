@@ -1,6 +1,6 @@
 ---
 name: stage-openspec-init
-description: Establish a minimal Stage + OpenSpec governance skeleton for a new or ungoverned repository. Use when the user asks to initialize Stage/OpenSpec governance, create AGENTS/CLAUDE/RUNBOOK/Stage 0/Stage 1 from scratch, or adopt governance in a repository that has no coherent Stage/OpenSpec layer. Do not use for ordinary feature implementation, daily change work, or repairing an already-governed repository (use stage-project-bootstrap).
+description: Establish a minimal Stage + OpenSpec governance skeleton for a new or ungoverned repository. Use when the user asks to initialize Stage/OpenSpec governance, create AGENTS/CLAUDE/RUNBOOK/Stage 0/Stage 1 from scratch, or adopt governance in a repository that has no coherent Stage/OpenSpec layer. Do not use for ordinary feature implementation, daily change work, or repairing an already-governed repository (use stage-project-bootstrap). 中文触发：建立或初始化 Stage 与 OpenSpec 治理、从零生成 AGENTS/RUNBOOK/Stage 0/Stage 1、检测并安装 OpenSpec。
 ---
 
 # Stage OpenSpec Init
@@ -10,6 +10,13 @@ description: Establish a minimal Stage + OpenSpec governance skeleton for a new 
 Install the operating system for a repository, not product code. The output is a small, reviewable governance skeleton: agent rules, one workflow runbook, one current Stage, and one OpenSpec change. It must be honest about what is known, what is draft, and what is not delivered.
 
 This skill is an operator. The generated repository files become the rule source; the skill itself is not a second source of truth.
+
+## Language policy
+
+- Reply in the language the user writes in. If the user writes Chinese, reply in Chinese.
+- Write generated repository documents in the project's primary language (see `openspec/config.yaml`). For a Chinese project, Stage briefs, reports, `AGENTS.md`, and `RUNBOOK.md` are normally Chinese.
+- Keep OpenSpec structural headings, `SHALL`/`MUST`, CLI commands, file paths, and code identifiers in English.
+- Do not translate skill names, command names, or file paths.
 
 ## When to use
 
