@@ -1,6 +1,6 @@
 # 变更 Traceability：{{CHANGE_NAME}}
 
-> 所属 Stage：`doc/stages/{{STAGE_FILE}}`
+> 所属 Stage：`docs/stages/{{STAGE_FILE}}`
 > 状态：draft
 > 说明：Stage AC 编号只用于本 Stage 追溯，不写进长期 capability 的 requirement 名称。
 

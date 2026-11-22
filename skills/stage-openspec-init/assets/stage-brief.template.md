@@ -2,7 +2,7 @@
 
 > 状态：draft
 > 日期：{{DATE}}
-> 设计依据：`doc/architecture.md`（draft）
+> 设计依据：`docs/architecture.md`（draft）
 > 首个变更：`openspec/changes/{{FIRST_CHANGE}}/proposal.md`
 > 负责人：{{OWNER}}
 
@@ -72,6 +72,6 @@
 
 ## 9. 参考
 
-- `doc/architecture.md`
-- `doc/workflow/RUNBOOK.md`
+- `docs/architecture.md`
+- `docs/workflow/RUNBOOK.md`
 - `openspec/changes/{{FIRST_CHANGE}}/proposal.md`

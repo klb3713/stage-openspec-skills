@@ -18,7 +18,7 @@ This project separates the two concerns:
 
 | Layer | Question it answers | Artifact |
 |---|---|---|
-| Stage | What are we delivering, for whom, with what evidence, and who approves exit? | `doc/stages/stage-N-*-brief.md` + report |
+| Stage | What are we delivering, for whom, with what evidence, and who approves exit? | `docs/stages/stage-N-*-brief.md` + report |
 | OpenSpec change | What behavior changes, and how do we verify it? | `openspec/changes/<change>/` |
 | Capability spec | What is true now? | `openspec/specs/<capability>/spec.md` |
 
@@ -140,12 +140,12 @@ For the `standard` profile:
 AGENTS.md
 CLAUDE.md
 README.md                 # only a short workflow section
-doc/architecture.md       # draft, explicitly unapproved
-doc/workflow/RUNBOOK.md
-doc/workflow/templates/stage-brief.md
-doc/workflow/templates/traceability.md
-doc/stages/stage-0-baseline.md
-doc/stages/stage-1-<slice>-brief.md
+docs/architecture.md       # draft, explicitly unapproved
+docs/workflow/RUNBOOK.md
+docs/workflow/templates/stage-brief.md
+docs/workflow/templates/traceability.md
+docs/stages/stage-0-baseline.md
+docs/stages/stage-1-<slice>-brief.md
 openspec/config.yaml
 openspec/changes/<first-change>/
   proposal.md

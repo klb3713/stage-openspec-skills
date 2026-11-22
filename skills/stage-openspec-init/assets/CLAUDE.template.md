@@ -3,9 +3,9 @@
 > 本文件只做入口，不复制规则。开始工作前按顺序读取：
 >
 > 1. [`AGENTS.md`](AGENTS.md)：项目硬约束、命令、代码规范。
-> 2. [`doc/workflow/RUNBOOK.md`](doc/workflow/RUNBOOK.md)：Stage 与 OpenSpec 的操作流程、门禁和命令。
-> 3. [`doc/architecture.md`](doc/architecture.md)：目标设计；目标设计不等于已实现。
-> 4. 当前 Stage brief（如有）：`doc/stages/`；light profile 可能没有 Stage 层。
+> 2. [`docs/workflow/RUNBOOK.md`](docs/workflow/RUNBOOK.md)：Stage 与 OpenSpec 的操作流程、门禁和命令。
+> 3. [`docs/architecture.md`](docs/architecture.md)：目标设计；目标设计不等于已实现。
+> 4. 当前 Stage brief（如有）：`docs/stages/`；light profile 可能没有 Stage 层。
 > 5. OpenSpec：`openspec/config.yaml`、`openspec/specs/`、`openspec/changes/`。
 
 ## 工作规则

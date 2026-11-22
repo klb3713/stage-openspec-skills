@@ -37,7 +37,7 @@ Do not use for:
 
 ## Guardrails
 
-- Read before writing: `AGENTS.md`, `CLAUDE.md`, `doc/workflow/RUNBOOK.md`, `doc/architecture.md`, `README.md`, `openspec/config.yaml`, existing Stage/change files, and `git status --short --branch`.
+- Read before writing: `AGENTS.md`, `CLAUDE.md`, `docs/workflow/RUNBOOK.md`, `docs/architecture.md`, `README.md`, `openspec/config.yaml`, existing Stage/change files, and `git status --short --branch`.
 - Never overwrite user work. If unrelated changes exist, report them and ask before touching the tree.
 - Never invent architecture, acceptance evidence, real data, credentials, thresholds, or test results. Unknowns become explicit open decisions.
 - Never create `openspec/templates/`, a local wrapper script, or a copy-paste change-template flow. Use the official CLI only.
@@ -78,9 +78,9 @@ openspec --version
 Check whether these exist and are coherent:
 
 - `AGENTS.md`, `CLAUDE.md`, `README.md`;
-- `doc/workflow/RUNBOOK.md` and `doc/workflow/templates/`;
-- `doc/architecture.md`;
-- `doc/stages/` and any Stage briefs;
+- `docs/workflow/RUNBOOK.md` and `docs/workflow/templates/`;
+- `docs/architecture.md`;
+- `docs/stages/` and any Stage briefs;
 - `openspec/config.yaml`, `openspec/specs/`, `openspec/changes/`;
 - build/test/lint configuration and the real commands.
 
@@ -135,11 +135,11 @@ Use templates from `assets/` and replace every `{{PLACEHOLDER}}`. Do not leave a
 1. `openspec/config.yaml` — schema, project context, artifact rules, apply/archive guidance.
 2. `AGENTS.md` — project identity, truth-source table, Stage/change rules, real commands, safety rules, skills. Replace `{{OPENSPEC_INSTALL}}` with the verified install method (for example `global npm` or `project-local pnpm`); record the exact command prefix.
 3. `CLAUDE.md` — thin pointer only; do not duplicate rules.
-4. `doc/workflow/RUNBOOK.md` — two-level model, profiles, lifecycles, gates, commands, common errors.
-5. `doc/workflow/templates/stage-brief.md` and `traceability.md` — project-local templates.
-6. `doc/architecture.md` — if missing, create a clearly marked draft from the interview; list unknowns as open questions. Never present it as approved.
-7. `doc/stages/stage-0-baseline.md` — standard/heavy only; current facts, what is missing, Stage 0 acceptance and exit conditions.
-8. `doc/stages/stage-1-<slice>-brief.md` — standard/heavy only; behavior-free scope, AC, non-goals, exit conditions.
+4. `docs/workflow/RUNBOOK.md` — two-level model, profiles, lifecycles, gates, commands, common errors.
+5. `docs/workflow/templates/stage-brief.md` and `traceability.md` — project-local templates.
+6. `docs/architecture.md` — if missing, create a clearly marked draft from the interview; list unknowns as open questions. Never present it as approved.
+7. `docs/stages/stage-0-baseline.md` — standard/heavy only; current facts, what is missing, Stage 0 acceptance and exit conditions.
+8. `docs/stages/stage-1-<slice>-brief.md` — standard/heavy only; behavior-free scope, AC, non-goals, exit conditions.
 9. `README.md` — add a short "开发流程" section linking AGENTS/RUNBOOK/Stage/OpenSpec. Do not rewrite the whole README.
 10. First OpenSpec change:
 
@@ -169,7 +169,7 @@ git diff --check
 Also check:
 
 ```bash
-grep -RIn --exclude-dir=.git --exclude-dir=node_modules '{{' AGENTS.md CLAUDE.md README.md doc openspec 2>/dev/null || true
+grep -RIn --exclude-dir=.git --exclude-dir=node_modules '{{' AGENTS.md CLAUDE.md README.md docs openspec 2>/dev/null || true
 ```
 
 - no `{{` placeholders remain in generated files;

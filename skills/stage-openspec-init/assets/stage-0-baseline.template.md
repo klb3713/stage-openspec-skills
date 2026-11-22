@@ -3,7 +3,7 @@
 > 状态：draft，待评审。Stage 0 只记录真实起点和约束，不交付业务能力。
 > 基线日期：{{DATE}}
 > 代码基线：{{COMMIT}}
-> 设计基线：`doc/architecture.md`（draft）
+> 设计基线：`docs/architecture.md`（draft）
 
 ## 1. 目的
 
@@ -25,7 +25,7 @@
 | --- | --- |
 | `AGENTS.md` | {{AGENTS_STATUS}} |
 | `README.md` | {{README_STATUS}} |
-| `doc/architecture.md` | draft；目标设计不等于已实现 |
+| `docs/architecture.md` | draft；目标设计不等于已实现 |
 | `openspec/config.yaml` | schema `spec-driven`；{{PROJECT_LANGUAGE}} artifacts，结构标题/SHALL/MUST 英文 |
 | `openspec/specs/` | {{SPECS_STATUS}} |
 | `openspec/changes/` | {{CHANGES_STATUS}} |
@@ -73,7 +73,7 @@ Stage 0 退出不等于 Stage 1 实施授权；代码、环境、真实数据和
 
 ## 6. 后续入口
 
-- 工作流：`doc/workflow/RUNBOOK.md`
-- 当前 Stage：`doc/stages/{{CURRENT_STAGE_FILE}}`
+- 工作流：`docs/workflow/RUNBOOK.md`
+- 当前 Stage：`docs/stages/{{CURRENT_STAGE_FILE}}`
 - 首个变更：`openspec/changes/{{FIRST_CHANGE}}/proposal.md`
-- 目标架构：`doc/architecture.md`
+- 目标架构：`docs/architecture.md`

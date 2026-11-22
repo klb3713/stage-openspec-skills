@@ -18,7 +18,7 @@ Decide the correct lane, create the required artifacts, enforce the two-level ga
 
 ## Guardrails
 
-- Read `AGENTS.md`, `doc/workflow/RUNBOOK.md`, `doc/architecture.md`, the current Stage brief and `openspec/config.yaml` before acting.
+- Read `AGENTS.md`, `docs/workflow/RUNBOOK.md`, `docs/architecture.md`, the current Stage brief and `openspec/config.yaml` before acting.
 - Use the official CLI: `openspec new change`, `openspec instructions`, `openspec validate`, `openspec archive`.
 - For Stage/change lanes, verify `openspec --version` is 2.1.0 before planning. If it is missing or different, stop and point to `../stage-openspec-init/references/toolchain.md`; do not install or upgrade it from this skill.
 - Never recreate `openspec/templates/` or use the removed `scripts/openspec.sh`.

@@ -6,7 +6,7 @@ context: |
   Language: {{PROJECT_LANGUAGE}}；All artifacts must be written in {{PROJECT_LANGUAGE}}.
   Keep OpenSpec structural headings and SHALL/MUST keywords in English.
   Current stage: {{CURRENT_STAGE}}.
-  Target design: doc/architecture.md. Stage scope/AC: doc/stages/. Workflow: doc/workflow/RUNBOOK.md.
+  Target design: docs/architecture.md. Stage scope/AC: docs/stages/. Workflow: docs/workflow/RUNBOOK.md.
   Behavior contracts belong in openspec/specs; changes belong in openspec/changes.
   Do not treat scaffold code, synthetic fixtures or local tests as production evidence.
 

@@ -8,6 +8,8 @@ semantic versioning for skill contracts.
 
 ### Changed
 
+- Changed the generated documentation directory from `doc/` to `docs/` across
+  `stage-openspec-init` templates, skill instructions, and reference docs.
 - Renamed `project-bootstrap` to `stage-project-bootstrap` to make its Stage
   layer role explicit. The skill contract is unchanged.
 - Added a shared language policy and Chinese trigger phrases to all three

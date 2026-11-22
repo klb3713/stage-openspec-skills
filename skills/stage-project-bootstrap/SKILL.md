@@ -18,9 +18,9 @@ Audit the repository first, then propose a minimal repair diff. This skill repai
 
 ## Guardrails
 
-- Read the repository rules before changing anything: `AGENTS.md`, `CLAUDE.md`, `doc/workflow/RUNBOOK.md`, `doc/architecture.md`, Stage briefs, `openspec/config.yaml`.
+- Read the repository rules before changing anything: `AGENTS.md`, `CLAUDE.md`, `docs/workflow/RUNBOOK.md`, `docs/architecture.md`, Stage briefs, `openspec/config.yaml`.
 - Treat `AGENTS.md` and archived OpenSpec specs as the rule source. This skill is an operator, not a second source of truth.
-- If `AGENTS.md`, `doc/workflow/RUNBOOK.md`, or `openspec/config.yaml` are absent, do not create them here; hand off to `stage-openspec-init`. A light profile that intentionally has no Stage briefs is not a missing governance layer.
+- If `AGENTS.md`, `docs/workflow/RUNBOOK.md`, or `openspec/config.yaml` are absent, do not create them here; hand off to `stage-openspec-init`. A light profile that intentionally has no Stage briefs is not a missing governance layer.
 - Do not overwrite existing user work. Check `git status`; if unrelated changes exist, stop and report them.
 - Do not read, copy or write secrets, `.env` values, tokens, real customer data or unredacted samples.
 - Do not run Docker, databases, Workers, deployments or production commands.
@@ -35,9 +35,9 @@ Audit the repository first, then propose a minimal repair diff. This skill repai
 Read, in order:
 
 1. `AGENTS.md` and `CLAUDE.md`
-2. `doc/workflow/RUNBOOK.md`
-3. `doc/architecture.md` (target design, not implemented state)
-4. `doc/stages/*.md`
+2. `docs/workflow/RUNBOOK.md`
+3. `docs/architecture.md` (target design, not implemented state)
+4. `docs/stages/*.md`
 5. `openspec/config.yaml`, `openspec/specs/`, `openspec/changes/`
 6. `README.md`, build/test configuration, `git status --short --branch`, and `openspec --version`.
 
@@ -83,8 +83,8 @@ Repair only artifacts that already exist; if an item is missing, do not create i
 
 1. `AGENTS.md`: stale identity, current state, links, Stage/change rules or commands.
 2. `CLAUDE.md`: stale pointer; keep it thin and do not duplicate rules.
-3. `doc/workflow/RUNBOOK.md` and templates: stale lifecycle, gates, commands or links.
-4. `doc/stages/stage-0-baseline.md`: stale facts or status drift.
+3. `docs/workflow/RUNBOOK.md` and templates: stale lifecycle, gates, commands or links.
+4. `docs/stages/stage-0-baseline.md`: stale facts or status drift.
 5. Current Stage brief: stale scope, AC, evidence or open decisions.
 6. `openspec/config.yaml`: stale artifact rules or guidance.
 7. Existing active change: missing/stale `traceability.md`, task status or artifact links; do not create a new change just to fill the folder.

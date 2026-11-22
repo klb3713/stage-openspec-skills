@@ -12,19 +12,19 @@
 开始工作前按顺序读取：
 
 1. 本文件：硬约束、命令、安全边界。
-2. `doc/workflow/RUNBOOK.md`：Stage/change 操作流程、门禁和常见错误。
-3. `doc/architecture.md`：目标设计；目标设计不等于已实现。
-4. 当前 Stage brief：从 `doc/stages/` 进入。
+2. `docs/workflow/RUNBOOK.md`：Stage/change 操作流程、门禁和常见错误。
+3. `docs/architecture.md`：目标设计；目标设计不等于已实现。
+4. 当前 Stage brief：从 `docs/stages/` 进入。
 5. OpenSpec：`openspec/config.yaml`、`openspec/specs/`、`openspec/changes/`。
 
 | 主题 | 真源 |
 | --- | --- |
-| 目标架构与职责边界 | `doc/architecture.md` |
-| 当前阶段范围/AC/退出条件 | `doc/stages/stage-<N>-*-brief.md` |
+| 目标架构与职责边界 | `docs/architecture.md` |
+| 当前阶段范围/AC/退出条件 | `docs/stages/stage-<N>-*-brief.md` |
 | 当前行为契约 | `openspec/specs/`（归档后） |
 | 在途行为变更 | `openspec/changes/` |
-| 工作流与门禁 | `doc/workflow/RUNBOOK.md` |
-| 阶段状态 | `doc/stages/` + 项目看板/路线图（如已有） |
+| 工作流与门禁 | `docs/workflow/RUNBOOK.md` |
+| 阶段状态 | `docs/stages/` + 项目看板/路线图（如已有） |
 | 验证证据 | 报告、测试输出、运行记录；不写进规格冒充事实 |
 
 ## 2. Stage 与 OpenSpec 的分工

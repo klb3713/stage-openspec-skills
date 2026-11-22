@@ -20,7 +20,7 @@
 
 | 层 | 回答的问题 | 产物 |
 |---|---|---|
-| Stage | 交付什么、给谁、要什么证据、谁批准退出？ | `doc/stages/stage-N-*-brief.md` + report |
+| Stage | 交付什么、给谁、要什么证据、谁批准退出？ | `docs/stages/stage-N-*-brief.md` + report |
 | OpenSpec change | 哪个行为变了、怎么验证？ | `openspec/changes/<change>/` |
 | Capability spec | 现在什么是真的？ | `openspec/specs/<capability>/spec.md` |
 
@@ -142,12 +142,12 @@ openspec doctor
 AGENTS.md
 CLAUDE.md
 README.md                 # 只加一段工作流入口
-doc/architecture.md       # draft，明确未评审
-doc/workflow/RUNBOOK.md
-doc/workflow/templates/stage-brief.md
-doc/workflow/templates/traceability.md
-doc/stages/stage-0-baseline.md
-doc/stages/stage-1-<slice>-brief.md
+docs/architecture.md       # draft，明确未评审
+docs/workflow/RUNBOOK.md
+docs/workflow/templates/stage-brief.md
+docs/workflow/templates/traceability.md
+docs/stages/stage-0-baseline.md
+docs/stages/stage-1-<slice>-brief.md
 openspec/config.yaml
 openspec/changes/<first-change>/
   proposal.md

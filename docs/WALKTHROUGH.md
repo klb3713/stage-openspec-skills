@@ -41,12 +41,12 @@ Review the file list. For a `standard` profile, expect roughly:
 ```text
 AGENTS.md
 CLAUDE.md
-doc/architecture.md            # draft, not approved
-doc/workflow/RUNBOOK.md
-doc/workflow/templates/stage-brief.md
-doc/workflow/templates/traceability.md
-doc/stages/stage-0-baseline.md
-doc/stages/stage-1-<slice>-brief.md
+docs/architecture.md            # draft, not approved
+docs/workflow/RUNBOOK.md
+docs/workflow/templates/stage-brief.md
+docs/workflow/templates/traceability.md
+docs/stages/stage-0-baseline.md
+docs/stages/stage-1-<slice>-brief.md
 openspec/config.yaml
 openspec/changes/<change>/
   proposal.md

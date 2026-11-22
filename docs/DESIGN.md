@@ -41,7 +41,7 @@ the documents are synchronized, and the owner confirms exit.
 
 | Question | Source |
 |---|---|
-| Why does this project exist and how is it structured? | `doc/architecture.md` |
+| Why does this project exist and how is it structured? | `docs/architecture.md` |
 | What is the current program scope and exit condition? | current Stage brief |
 | What behavior is true now? | archived OpenSpec capability specs |
 | What behavior is changing? | active OpenSpec change |
