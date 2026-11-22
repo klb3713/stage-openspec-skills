@@ -37,12 +37,38 @@ behavior and evidence are complete; a Stage exits only after all required
 changes are archived, the Stage ACs have evidence, the delivery report exists,
 the documents are synchronized, and the owner confirms exit.
 
+## Change map and waves
+
+A Stage with several changes needs one more document: the change map
+(`docs/stages/stage-N-*-change-map.md`). It answers what the brief does not:
+which change may start after which, what can run at the same time, who owns each
+shared directory or capability, and what must be true before the next batch
+starts.
+
+- **The table is the truth.** Dependencies, wave membership and directory
+  ownership live in one table; the mermaid graph and the wave sections are
+  derived views.
+- **A wave is a decision, not a topological layer.** Batching follows review
+  capacity, environments, merge conflicts and people, and the map records the
+  reason. Two unrelated changes may still be split across waves; a change never
+  shares a wave with a producer it depends on.
+- **Gates are recorded, not enforced.** Each wave ends with commands
+  (`openspec validate`, `openspec status --change`), a human check, and a
+  `pass`/`fail` row. No row means not passed.
+- **OpenSpec does not model this.** It has artifact dependencies inside one
+  change and allows several active changes at once, but no cross-change
+  dependency, no wave, and no gate. The map is the repository's own planning
+  layer; it never enters `openspec/` and never restates behavior.
+- **Archive order follows the map.** Two changes that write the same capability
+  archive one at a time, in the order the map declares.
+
 ## Source of truth
 
 | Question | Source |
 |---|---|
 | Why does this project exist and how is it structured? | `docs/architecture.md` |
 | What is the current program scope and exit condition? | current Stage brief |
+| What order can changes run in, and who owns which directory? | current Stage change map |
 | What behavior is true now? | archived OpenSpec capability specs |
 | What behavior is changing? | active OpenSpec change |
 | What is the status of the program? | roadmap or Stage index |

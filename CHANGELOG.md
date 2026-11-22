@@ -6,6 +6,14 @@ semantic versioning for skill contracts.
 
 ## [Unreleased]
 
+### Added
+
+- A change map template and matching Stage/change guidance for Stages that plan
+  two or more changes: one table owns `depends_on`, wave membership, directory
+  and capability owners, and archive order, with one recorded gate per wave.
+  The map stays a repository planning document; OpenSpec artifact dependencies
+  remain per-change.
+
 ### Changed
 
 - Changed the generated documentation directory from `doc/` to `docs/` across
@@ -21,6 +29,9 @@ semantic versioning for skill contracts.
 - Added a change directory naming convention to `stage-change-workflow` and
   the RUNBOOK template: behavior/capability changes use a behavior name with
   no Stage prefix; Stage ownership stays in the brief/traceability/roadmap.
+- Wired the change map through the generated governance files: Stage brief
+  section 4, AGENTS read order, RUNBOOK parallel-work rules, and
+  `stage-change-workflow` wave admission and archive ordering.
 
 ## [0.1.0] - 2026-11-19
 

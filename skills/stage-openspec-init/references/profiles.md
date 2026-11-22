@@ -37,8 +37,10 @@ Generate light plus:
 docs/architecture.md (draft if missing)
 docs/stages/stage-0-baseline.md
 docs/stages/stage-1-<slice>-brief.md
+docs/stages/stage-1-<slice>-change-map.md (when the Stage plans two or more changes)
 docs/workflow/templates/stage-brief.md
 docs/workflow/templates/traceability.md
+docs/workflow/templates/change-map.md
 openspec/changes/<first-change>/traceability.md
 ```
 

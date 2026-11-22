@@ -18,6 +18,7 @@ const requiredFiles = {
     "assets/architecture.template.md",
     "assets/stage-0-baseline.template.md",
     "assets/stage-brief.template.md",
+    "assets/change-map.template.md",
     "assets/traceability.template.md",
     "references/profiles.md",
     "references/toolchain.md",

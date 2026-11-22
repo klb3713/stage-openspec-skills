@@ -26,13 +26,15 @@
 
 一个 Stage 可以包含多个 change；不需要新程序的改动可以独立成一个 change。**change archive 不等于 Stage exit。**
 
+包含两个及以上 change 的 Stage 还会维护一份 change map：依赖关系、wave 分批及分批依据、目录与能力归属、以及每个 wave 的门记录。OpenSpec 没有跨 change 依赖模型，所以 map 只是仓库自己的计划文档，不是 OpenSpec artifact，也不复制行为需求。
+
 ## 包含的 skill
 
 | Skill | 用途 | 不会做 |
 |---|---|---|
 | [`stage-openspec-init`](skills/stage-openspec-init/SKILL.md) | 为新仓库/治理不完整仓库建立 Stage + OpenSpec 骨架；检测并引导安装 OpenSpec | 写业务代码、批准 Stage、自动 archive 或 commit |
 | [`stage-project-bootstrap`](skills/stage-project-bootstrap/SKILL.md) | 审计并最小修复已有治理层的文档/命令/状态漂移 | 新建治理层、批量建 Stage、实现功能 |
-| [`stage-change-workflow`](skills/stage-change-workflow/SKILL.md) | 判断 Stage/change/Fast Track；生成 artifacts；执行评审、实施、归档门禁 | 自动批准、自动归档、自动 Stage 退出、伪造证据 |
+| [`stage-change-workflow`](skills/stage-change-workflow/SKILL.md) | 判断 Stage/change/Fast Track；生成 artifacts；按 change map 的 wave 准入；执行评审、实施、归档门禁 | 自动批准、自动归档、自动 Stage 退出、伪造证据 |
 
 `stage-openspec-init` 是入口，另外两个负责日常操作和修复。
 
@@ -146,8 +148,10 @@ docs/architecture.md       # draft，明确未评审
 docs/workflow/RUNBOOK.md
 docs/workflow/templates/stage-brief.md
 docs/workflow/templates/traceability.md
+docs/workflow/templates/change-map.md
 docs/stages/stage-0-baseline.md
 docs/stages/stage-1-<slice>-brief.md
+docs/stages/stage-1-<slice>-change-map.md  # Stage 计划两个及以上 change 时
 openspec/config.yaml
 openspec/changes/<first-change>/
   proposal.md

@@ -11,6 +11,7 @@
 | `AGENTS.md` | 硬约束、命令、安全边界 | 具体行为需求 |
 | `docs/architecture.md` | 目标设计、职责边界、关键决策 | 实施状态、验收证据 |
 | `docs/stages/stage-<N>-*-brief.md` | 范围、AC、非目标、退出条件 | 行为细节 |
+| `docs/stages/stage-<N>-*-change-map.md` | change 拆解、依赖、wave、共享资源归属、门记录 | 行为细节、任务进度 |
 | `openspec/specs/<capability>/spec.md` | 当前行为契约 | 阶段状态、路线图 |
 | `openspec/changes/<change>/` | 在途行为变更 | 阶段验收结论 |
 | `docs/workflow/RUNBOOK.md` | 操作步骤、门禁、常见错误 | 总体设计 |
@@ -35,6 +36,13 @@ Stage（治理单元）
 
 1. change archive：tasks 完成、证据可复核、traceability 一致、validate 通过。
 2. Stage exit：所有必需 changes 归档、Stage AC 有证据、报告完成、文档同步、负责人确认。
+
+一个 Stage 有两个以上 change 时，change map 决定“什么时候做、能并行到什么程度”：
+
+- 依赖边只表示可以开始；wave 是人工分批，分批依据（环境、评审带宽、合并冲突）写在 map 里；
+- 每个 wave 有一道门；门在 map 的 §10 有 pass 记录才算通过，没记录就是没通过；
+- 共享目录、共享清单和 capability 各有唯一 owner，非 owner 只提补丁；
+- 归档顺序由 map 决定，同一 capability 串行归档。
 
 ## 3. 流程档位
 
@@ -61,7 +69,7 @@ Stage brief 必须写：
 - 目的、交付、明确不交付；
 - 前置条件和未满足时的处理；
 - 可编号 AC（如 `S1-AC-01`）；
-- change 清单；
+- change 清单（依赖、wave 与归属见 change map）；
 - 安全/数据/证据要求；
 - 退出条件和开放决策。
 
@@ -98,7 +106,7 @@ openspec instructions tasks --change <change-name>
 - `traceability.md`：Stage AC → requirement/scenario → 计划证据。
 
 5. **评审**：用户/负责人确认后才能实施；“artifacts 存在”不是实施授权。
-6. **实施**：按依赖顺序；只有验证通过才勾选 task。
+6. **实施**：按 tasks 依赖顺序，并遵守 change map 的 wave 门；上一 wave 的门没有 pass 记录时不开始下一批。只有验证通过才勾选 task。
 7. **归档**：
 
 ```bash
@@ -163,6 +171,9 @@ openspec status --change <change-name>
 | 用 `openspec status` 判断已评审 | 未评审的变更被当成批准 | 审批记录放 Stage/报告 |
 | 复制旧模板或旧脚本 | 产生第二套流程 | 用 `openspec new change` + `instructions` |
 | 一个 change 塞整个 Stage | 无法独立评审/归档 | 按行为边界拆 change |
+| 把拓扑层当 wave | 并行度与真实约束不符，关键路径失控 | wave 由人按环境/评审带宽分批，并写分批依据 |
+| 并行 change 各自改 lockfile/聚合配置 | 合并冲突，构建长期红 | 共享清单由 change map 指定 owner 在门内统一更新 |
+| 跳过 wave 门直接开下一个 change | 下游基于未稳定接口返工 | map 的 §10 没有 pass 记录就不开始下一批 |
 | 用合成数据证明真实数据 | 证据造假 | 合成夹具只做自动化；真实验收另记 |
 | 未签核阈值直接判定合格 | 业务结论无依据 | 只输出技术结果或 `NOT_EVALUATED` |
 | 为了本地演示关闭鉴权 | 安全边界失效 | 用受控测试上下文，不对外暴露 |

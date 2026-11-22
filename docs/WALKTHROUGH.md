@@ -45,8 +45,10 @@ docs/architecture.md            # draft, not approved
 docs/workflow/RUNBOOK.md
 docs/workflow/templates/stage-brief.md
 docs/workflow/templates/traceability.md
+docs/workflow/templates/change-map.md
 docs/stages/stage-0-baseline.md
 docs/stages/stage-1-<slice>-brief.md
+docs/stages/stage-1-<slice>-change-map.md  # only when the Stage plans two or more changes
 openspec/config.yaml
 openspec/changes/<change>/
   proposal.md
@@ -56,6 +58,11 @@ openspec/changes/<change>/
 ```
 
 `light` skips the Stage files; `heavy` adds stricter evidence expectations.
+
+The change map is the Stage's planning layer, not an OpenSpec artifact: it
+records `depends_on`, wave membership with its rationale, directory and
+capability owners, and one gate row per wave. A single-change Stage keeps those
+facts in brief §4 instead; two or more changes get the map.
 
 ### 3. Check the generated skeleton
 

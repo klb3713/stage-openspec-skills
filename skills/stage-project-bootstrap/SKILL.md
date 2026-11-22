@@ -49,6 +49,7 @@ Check and report:
 - Rule consistency: AGENTS/CLAUDE/RUNBOOK/README links and commands agree; no `{project-name}` placeholders.
 - OpenSpec: `openspec --version` is 2.1.0; config schema and context exist; `openspec list --specs` and `openspec status --change` are coherent; no deprecated template-copy flow.
 - Stage coverage: if the project uses the Stage layer, a Stage 0 baseline and current Stage brief exist with scope, AC, out-of-scope, exit conditions and open decisions; a light profile may intentionally omit Stage docs.
+- Change map: when the current Stage plans two or more changes, `docs/stages/stage-<N>-*-change-map.md` exists; its table names every planned change once, each row has a wave and `depends_on`, the graph matches the table, capability paths do not collide inside a wave, and every wave marked passed has a gate record. A single-change Stage that defers dependencies to the brief is not a defect.
 - Traceability: Stage AC map to change requirements/scenarios or are explicitly deferred.
 - Safety: no default Principal, `AUTH_DISABLED`, fake health/ready, synthetic data presented as real, or secret material.
 - Repository hygiene: no stale paths, dead scripts, duplicate workflow documents, or undocumented generated files.
@@ -86,8 +87,9 @@ Repair only artifacts that already exist; if an item is missing, do not create i
 3. `docs/workflow/RUNBOOK.md` and templates: stale lifecycle, gates, commands or links.
 4. `docs/stages/stage-0-baseline.md`: stale facts or status drift.
 5. Current Stage brief: stale scope, AC, evidence or open decisions.
-6. `openspec/config.yaml`: stale artifact rules or guidance.
-7. Existing active change: missing/stale `traceability.md`, task status or artifact links; do not create a new change just to fill the folder.
+6. Current Stage change map: stale membership, missing wave or `depends_on`, ownership collision, gate marked passed without a record. Add the row for an existing active change before creating a new one.
+7. `openspec/config.yaml`: stale artifact rules or guidance.
+8. Existing active change: missing/stale `traceability.md`, task status or artifact links; do not create a new change just to fill the folder.
 
 ### 6. Verify
 

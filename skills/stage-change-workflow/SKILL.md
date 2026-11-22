@@ -26,6 +26,8 @@ Decide the correct lane, create the required artifacts, enforce the two-level ga
 - Never fake auth, coordinates, thresholds, upstream success, test results or real-data evidence.
 - Do not start services, Docker, databases or production operations without explicit confirmation.
 - Do not edit code while the change is still in planning unless the user separately authorizes implementation.
+- When the current Stage plans two or more changes, read its change map before planning or implementing. A change from a later wave waits until the previous wave has a `pass` record in the map's gate section.
+- Respect directory and capability ownership from the map. Editing another change's directory or a shared file directly is a gate failure, not a shortcut.
 
 ## Workflow
 
@@ -82,7 +84,7 @@ openspec list
 openspec list --specs
 ```
 
-Read the relevant Stage brief, architecture section, current specs and any active change. Identify:
+Read the relevant Stage brief, change map (when the Stage has one), architecture section, current specs and any active change. Identify:
 
 - the Stage AC this work contributes to;
 - the capability that owns the behavior;
@@ -90,6 +92,19 @@ Read the relevant Stage brief, architecture section, current specs and any activ
 - unresolved decisions that block implementation.
 
 If the request conflicts with an approved Stage/AC, stop and surface the conflict before writing artifacts.
+
+#### Wave admission
+
+A change may start only when all of these hold:
+
+- the change map has a row for it, with a `wave` and its `depends_on` names;
+- every predecessor name either appears in `openspec list --archived --json`, or its wave has a `pass` gate record in the map;
+- its owned directories and capability path do not overlap another in-flight change;
+- the wave's entry condition is recorded (first wave needs no gate; later waves need the previous gate's `pass`).
+
+If the Stage plans two or more changes and the map is missing, create it from `docs/workflow/templates/change-map.md` before `openspec new change`; when the project has no local copy, adapt `../stage-openspec-init/assets/change-map.template.md`. Do not invent a second planning format for the project.
+
+A gate record states date, wave, gate, `pass`/`fail`, the commands and results, and who confirmed. No record means not passed.
 
 If `openspec --version` is missing or not 2.1.0, stop before `openspec list` and point to `../stage-openspec-init/references/toolchain.md`; do not install or upgrade from this skill.
 
@@ -139,11 +154,13 @@ Wait for explicit authorization. “Artifacts exist” is not authorization to i
 
 When authorized:
 
-- implement in task dependency order;
+- implement in task dependency order, and only inside the directories the change map assigns to this change;
 - update task checkboxes only after verification;
 - cover success, invalid input and key rejection paths;
 - keep real data, synthetic fixtures and local tests separate;
-- do not delete assertions or broaden skips to pass a gate.
+- do not delete assertions or broaden skips to pass a gate;
+- send shared-file edits (dependency manifests, lockfiles, aggregate config, deploy manifests) to their owner in the map instead of editing them here;
+- when the wave gate passes, record the gate in the map with commands, results and reviewer before starting the next wave.
 
 If implementation reveals a spec conflict, stop the affected part and revise the spec before continuing.
 
@@ -163,6 +180,8 @@ Check:
 - real-data ACs are either evidenced or marked not passed;
 - deviations and residual risks are recorded;
 - for a correction, the correction report and roadmap post-exit note are ready;
+- the change map's archive mode allows archiving now, and its recorded order puts this change next;
+- two changes writing the same capability archive one at a time, with `openspec validate --all --strict` between them;
 - main spec updates and document links are ready.
 
 Then ask for confirmation before:

@@ -24,13 +24,15 @@ This project separates the two concerns:
 
 A Stage can contain several changes. A change can stand alone when it does not need a new program. **Change archive is not Stage exit.**
 
+A Stage with two or more changes also keeps a change map: dependency edges, wave batches with their rationale, directory and capability owners, and one recorded gate per wave. OpenSpec has no cross-change dependency model, so the map stays a repository planning document — it is not an OpenSpec artifact and does not restate behavior.
+
 ## Included skills
 
 | Skill | Use it for | It will not |
 |---|---|---|
 | [`stage-openspec-init`](skills/stage-openspec-init/SKILL.md) | Create a Stage + OpenSpec governance skeleton in a new or ungoverned repository; detect and guide OpenSpec installation | Write product code, approve a Stage, archive a change, or commit automatically |
 | [`stage-project-bootstrap`](skills/stage-project-bootstrap/SKILL.md) | Audit and minimally repair an existing governance layer whose docs, commands, or status have drifted | Create a new governance layer, bulk-create Stages, or implement features |
-| [`stage-change-workflow`](skills/stage-change-workflow/SKILL.md) | Classify work as Stage/change/Fast Track; create artifacts; run review, implementation, and archive gates | Auto-approve, auto-archive, auto-exit a Stage, or fake evidence |
+| [`stage-change-workflow`](skills/stage-change-workflow/SKILL.md) | Classify work as Stage/change/Fast Track; create artifacts; admit changes into waves; run review, implementation, and archive gates | Auto-approve, auto-archive, auto-exit a Stage, or fake evidence |
 
 `stage-openspec-init` is the entry point. The other two are the daily operators and the repair path.
 
@@ -144,8 +146,10 @@ docs/architecture.md       # draft, explicitly unapproved
 docs/workflow/RUNBOOK.md
 docs/workflow/templates/stage-brief.md
 docs/workflow/templates/traceability.md
+docs/workflow/templates/change-map.md
 docs/stages/stage-0-baseline.md
 docs/stages/stage-1-<slice>-brief.md
+docs/stages/stage-1-<slice>-change-map.md  # when the Stage plans two or more changes
 openspec/config.yaml
 openspec/changes/<first-change>/
   proposal.md

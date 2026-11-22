@@ -14,13 +14,14 @@
 1. 本文件：硬约束、命令、安全边界。
 2. `docs/workflow/RUNBOOK.md`：Stage/change 操作流程、门禁和常见错误。
 3. `docs/architecture.md`：目标设计；目标设计不等于已实现。
-4. 当前 Stage brief：从 `docs/stages/` 进入。
+4. 当前 Stage brief 与 change map：从 `docs/stages/` 进入。
 5. OpenSpec：`openspec/config.yaml`、`openspec/specs/`、`openspec/changes/`。
 
 | 主题 | 真源 |
 | --- | --- |
 | 目标架构与职责边界 | `docs/architecture.md` |
 | 当前阶段范围/AC/退出条件 | `docs/stages/stage-<N>-*-brief.md` |
+| 并行拆解、依赖、wave、共享资源归属 | `docs/stages/stage-<N>-*-change-map.md`（两个以上 change 时） |
 | 当前行为契约 | `openspec/specs/`（归档后） |
 | 在途行为变更 | `openspec/changes/` |
 | 工作流与门禁 | `docs/workflow/RUNBOOK.md` |
@@ -33,6 +34,7 @@
 - **OpenSpec change**：行为变更单元，管一次可观察行为的变化。
 - **Fast Track**：行为不变的小修、样式、配置、文档；保留测试和清晰提交说明。
 - 一个 Stage 可以包含多个 change；change 归档不等于 Stage 退出。
+- Stage 有两个以上 change 时先读 change map：上一 wave 的门没有 pass 记录，不开始下一 wave；只改自己 change 拥有的目录，共享文件按 map 指定的 owner 合入。
 - Stage brief 不复制行为需求；行为需求放 delta specs。
 
 两级门禁：
@@ -45,7 +47,7 @@
 1. 读架构、RUNBOOK、当前 Stage brief、现有 specs/changes。
 2. 判断走 Stage、change 还是 Fast Track。
 3. 行为变化：创建/继续 change，先写 proposal 和 delta specs，再写 design/tasks。
-4. 评审通过后才实施；按 tasks 依赖顺序推进。
+4. 评审通过后才实施；按 tasks 依赖顺序推进，并遵守 change map 的 wave 门。
 5. 只有证据存在才勾选 task；测试成功、无效输入和关键拒绝路径都要覆盖。
 6. 归档前跑 `openspec validate --all --strict`，检查 tasks/traceability/证据。
 7. Stage 退出前写报告、同步文档，由负责人确认。

@@ -136,12 +136,13 @@ Use templates from `assets/` and replace every `{{PLACEHOLDER}}`. Do not leave a
 2. `AGENTS.md` — project identity, truth-source table, Stage/change rules, real commands, safety rules, skills. Replace `{{OPENSPEC_INSTALL}}` with the verified install method (for example `global npm` or `project-local pnpm`); record the exact command prefix.
 3. `CLAUDE.md` — thin pointer only; do not duplicate rules.
 4. `docs/workflow/RUNBOOK.md` — two-level model, profiles, lifecycles, gates, commands, common errors.
-5. `docs/workflow/templates/stage-brief.md` and `traceability.md` — project-local templates.
+5. `docs/workflow/templates/stage-brief.md`, `traceability.md`, and `change-map.md` — project-local templates.
 6. `docs/architecture.md` — if missing, create a clearly marked draft from the interview; list unknowns as open questions. Never present it as approved.
 7. `docs/stages/stage-0-baseline.md` — standard/heavy only; current facts, what is missing, Stage 0 acceptance and exit conditions.
 8. `docs/stages/stage-1-<slice>-brief.md` — standard/heavy only; behavior-free scope, AC, non-goals, exit conditions.
-9. `README.md` — add a short "开发流程" section linking AGENTS/RUNBOOK/Stage/OpenSpec. Do not rewrite the whole README.
-10. First OpenSpec change:
+9. `docs/stages/stage-1-<slice>-change-map.md` — only when the Stage plans two or more changes; otherwise the brief change list is enough and the map is created when a second change is proposed. Record `depends_on`, wave membership, owned directories, shared-file owners, per-wave gates and the archive mode. It is a plan, not an OpenSpec artifact: never put it under `openspec/`.
+10. `README.md` — add a short "开发流程" section linking AGENTS/RUNBOOK/Stage/OpenSpec. Do not rewrite the whole README.
+11. First OpenSpec change:
 
 ```bash
 openspec new change <change-name>
@@ -176,6 +177,7 @@ grep -RIn --exclude-dir=.git --exclude-dir=node_modules '{{' AGENTS.md CLAUDE.md
 - no `openspec/templates/` directory, no local OpenSpec wrapper script;
 - links resolve;
 - Stage ACs map to change requirements/scenarios or are explicitly deferred;
+- when generated, the change map lists every planned change exactly once, gives each a wave, and its graph matches `depends_on`; no change depends on another change in the same wave;
 - every requirement has at least one scenario;
 - no secrets, real customer data, fake evidence, or fake test results;
 - generated docs do not claim implementation or approval.
@@ -213,6 +215,7 @@ Initialization is complete only when all of these are true:
 - `openspec doctor`, `openspec list`, `openspec list --specs`, and `openspec status --change` run without unexpected errors;
 - `openspec validate --all --strict` passes;
 - generated docs have no unresolved placeholders, broken local links, fake evidence, or claims of implementation/approval;
+- the change map, when generated, covers every planned change with `depends_on`, wave, owned directories, a gate per wave with an evidence location, and an archive mode;
 - `git diff --check` passes, and the user has seen the file list and validation results;
 - remaining install/approval actions are explicitly listed in the handoff.
 
@@ -222,7 +225,8 @@ This definition closes the **governance/planning skeleton**, not product deliver
 
 ## Artifact rules
 
-- Stage brief: scope, AC, non-goals, constraints, change map, exit conditions. No behavior requirements.
+- Stage brief: scope, AC, non-goals, constraints, change list, exit conditions. No behavior requirements.
+- Change map: `depends_on` edges, wave membership with the batching rationale, directory and capability owners, one gate per wave with evidence, merge/archive order. No behavior requirements either.
 - Change proposal: why now, what changes, out of scope, capabilities, impact.
 - Delta specs: `## ADDED/MODIFIED/REMOVED Requirements`; one observable behavior per requirement; SHALL/MUST; at least one `#### Scenario` with WHEN/THEN.
 - `tasks.md`: grouped, independently verifiable tasks; each states its verification.
@@ -255,6 +259,7 @@ Stop and ask before continuing when:
 - `assets/architecture.template.md`
 - `assets/stage-0-baseline.template.md`
 - `assets/stage-brief.template.md`
+- `assets/change-map.template.md`
 - `assets/traceability.template.md`
 - `references/profiles.md`
 - `references/toolchain.md`

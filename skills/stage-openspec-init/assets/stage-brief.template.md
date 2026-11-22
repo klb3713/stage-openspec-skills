@@ -37,6 +37,8 @@
 
 ## 4. 变更清单
 
+> 依赖、波次、目录与 capability 归属、门禁和归档顺序见 `docs/stages/stage-{{STAGE_NUMBER}}-<slice>-change-map.md`；Stage 计划两个以上 change 时该文件必须存在。本表只记录范围状态。
+
 | 变更 | 能力 | 状态 | 说明 |
 | --- | --- | --- | --- |
 | `{{FIRST_CHANGE}}` | `{{CAPABILITY_1}}` | proposed | {{CHANGE_DESCRIPTION_1}} |
