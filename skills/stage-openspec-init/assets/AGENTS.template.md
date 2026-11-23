@@ -11,8 +11,8 @@
 
 开始工作前按顺序读取：
 
-1. 本文件：硬约束、命令、安全边界。
-2. `docs/workflow/RUNBOOK.md`：Stage/change 操作流程、门禁和常见错误。
+1. 本文件：硬约束、安全边界、禁止项。
+2. `docs/workflow/RUNBOOK.md`：Stage/change 操作流程、门禁、命令和常见错误。
 3. `docs/architecture.md`：目标设计；目标设计不等于已实现。
 4. 当前 Stage brief 与 change map：从 `docs/stages/` 进入。
 5. OpenSpec：`openspec/config.yaml`、`openspec/specs/`、`openspec/changes/`。
@@ -24,50 +24,17 @@
 | 并行拆解、依赖、wave、共享资源归属 | `docs/stages/stage-<N>-*-change-map.md`（两个以上 change 时） |
 | 当前行为契约 | `openspec/specs/`（归档后） |
 | 在途行为变更 | `openspec/changes/` |
-| 工作流与门禁 | `docs/workflow/RUNBOOK.md` |
+| 工作流、门禁与命令 | `docs/workflow/RUNBOOK.md` |
 | 阶段状态 | `docs/stages/` + 项目看板/路线图（如已有） |
 | 验证证据 | 报告、测试输出、运行记录；不写进规格冒充事实 |
 
 ## 2. Stage 与 OpenSpec 的分工
 
-- **Stage**：交付程序/治理单元，管范围、授权、跨域、资源/环境准入、AC、证据和退出。
-- **OpenSpec change**：行为变更单元，管一次可观察行为的变化。
-- **Fast Track**：行为不变的小修、样式、配置、文档；保留测试和清晰提交说明。
-- 一个 Stage 可以包含多个 change；change 归档不等于 Stage 退出。
-- Stage 有两个以上 change 时先读 change map：上一 wave 的门没有 pass 记录，不开始下一 wave；只改自己 change 拥有的目录，共享文件按 map 指定的 owner 合入。
-- Stage brief 不复制行为需求；行为需求放 delta specs。
-
-两级门禁：
-
-1. **change archive**：tasks 完成、证据可复核、traceability 一致、validate 通过、评审确认。
-2. **Stage exit**：所有必需 changes 归档、Stage AC 有证据、报告完成、文档同步、负责人确认。
+Stage/change/Fast Track 的定义、两级门禁、change map 的 wave 门规则见 `docs/workflow/RUNBOOK.md` §2、§3；change 归档不等于 Stage 退出。
 
 ## 3. 标准流程
 
-1. 读架构、RUNBOOK、当前 Stage brief、现有 specs/changes。
-2. 判断走 Stage、change 还是 Fast Track。
-3. 行为变化：创建/继续 change，先写 proposal 和 delta specs，再写 design/tasks。
-4. 评审通过后才实施；按 tasks 依赖顺序推进，并遵守 change map 的 wave 门。
-5. 只有证据存在才勾选 task；测试成功、无效输入和关键拒绝路径都要覆盖。
-6. 归档前跑 `openspec validate --all --strict`，检查 tasks/traceability/证据。
-7. Stage 退出前写报告、同步文档，由负责人确认。
-
-工具链：OpenSpec 2.1.0（{{OPENSPEC_INSTALL}}）；Node.js >=22.20.0。项目内安装时，所有 OpenSpec 命令前加 `npx` 或 `pnpm exec`。
-
-OpenSpec 命令：
-
-```bash
-openspec new change <change-name>
-openspec instructions proposal --change <change-name>
-openspec instructions specs --change <change-name>
-openspec instructions design --change <change-name>
-openspec instructions tasks --change <change-name>
-openspec validate --all --strict
-openspec status --change <change-name>
-openspec archive <change-name>
-```
-
-不要创建 `openspec/templates/`，不要使用本地复制脚本。
+走 Stage、change 还是 Fast Track，以及 Stage/change 生命周期、artifacts、评审、实施与归档步骤见 `docs/workflow/RUNBOOK.md` §3–§5；工具链与命令见其 §8。
 
 ## 4. Fast Track
 
@@ -80,33 +47,17 @@ openspec archive <change-name>
 
 ## 5. 常用命令
 
-```bash
-# 安装/同步依赖
-{{INSTALL_CMD}}
-
-# 开发
-{{DEV_CMD}}
-
-# 测试
-{{TEST_CMD}}
-
-# 静态检查/格式
-{{LINT_CMD}}
-
-# 构建
-{{BUILD_CMD}}
-```
-
-命令必须来自仓库真实配置；不要写未验证的命令。
+OpenSpec 安装方式：`{{OPENSPEC_INSTALL}}`。安装/开发/测试/检查/构建与 OpenSpec 的命令清单、命令前缀只维护在 `docs/workflow/RUNBOOK.md` §8；命令必须来自仓库真实配置。
 
 ## 6. 安全与数据
 
 - 认证/授权默认 fail-closed；不引入默认 Principal、`AUTH_DISABLED` 或伪造身份。
 - 未注册业务路由保持 `404`；健康端点不是匿名业务入口。
-- 真实数据只在授权环境使用；记录来源、用途、范围和清理方式。
+- 真实数据只在授权环境使用；记录来源、用途、哈希/范围（如适用）和清理方式。
 - 合成夹具、模板页、本地测试通过不得写成真实数据/生产验收。
-- 不提交 `.env`、token、数据库口令、客户数据或生产连接信息。
-- 不擅自启动服务、Docker、数据库、Worker 或生产操作；需要时先请求确认。
+- 未签核阈值/规则只能输出技术结果，不能判定业务“合格”。
+- 不提交 `.env`、token、数据库口令、客户数据或生产连接信息；日志/错误详情不泄露秘密。
+- 启停服务/容器/数据库/Worker 前先判级 L0–L2（规则见 `docs/workflow/RUNBOOK.md` §7.1）；命中 L2（生产、真实数据/凭据、权限或基础设施变更、不可逆、公网暴露、关闭鉴权）即停并逐次确认。先判级后执行，不留“先启动后补确认”。
 
 ## 7. 代码风格
 
@@ -127,6 +78,7 @@ openspec archive <change-name>
 
 ## 9. 禁止
 
+- 不创建 `openspec/templates/`，不使用本地 OpenSpec 复制/包装脚本。
 - 不自动批准 Stage、自动归档 change、自动 commit 或自动宣布完成。
 - 不伪造 AC、证据、测试结果、认证、坐标、阈值或上游成功。
 - 不覆盖用户改动；不把模板、草案或目录存在当成已实现。

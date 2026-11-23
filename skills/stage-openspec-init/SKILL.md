@@ -133,9 +133,9 @@ Wait for confirmation. Do not write files during the dry-run.
 Use templates from `assets/` and replace every `{{PLACEHOLDER}}`. Do not leave angle-bracket or double-brace placeholders in generated files unless they are intentional documentation examples.
 
 1. `openspec/config.yaml` — schema, project context, artifact rules, apply/archive guidance.
-2. `AGENTS.md` — project identity, truth-source table, Stage/change rules, real commands, safety rules, skills. Replace `{{OPENSPEC_INSTALL}}` with the verified install method (for example `global npm` or `project-local pnpm`); record the exact command prefix.
-3. `CLAUDE.md` — thin pointer only; do not duplicate rules.
-4. `docs/workflow/RUNBOOK.md` — two-level model, profiles, lifecycles, gates, commands, common errors.
+2. `AGENTS.md` — project identity, truth-source table, hard constraints, safety rules, prohibitions, skills, and pointers to the RUNBOOK for workflow and commands. Replace `{{OPENSPEC_INSTALL}}` with the verified install method (for example `global npm` or `project-local pnpm`); keep the exact command prefix and the command list only in `RUNBOOK.md` §8.
+3. `CLAUDE.md` — create it as a relative symlink to `AGENTS.md` (`ln -s AGENTS.md CLAUDE.md`, run from the project root) so Claude Code reads the single source of truth and other agents keep reading `AGENTS.md` directly. Do not write a full copy. If symlink creation fails (e.g. Windows without developer/admin mode, or a filesystem that does not support symlinks), fall back to `assets/CLAUDE.template.md`: copy it to `CLAUDE.md` (it is a thin `@AGENTS.md` import shim). Never duplicate rules in `CLAUDE.md`.
+4. `docs/workflow/RUNBOOK.md` — two-level model, profiles, lifecycles, gates, service start/stop grading (§7.1), commands, common errors.
 5. `docs/workflow/templates/stage-brief.md`, `traceability.md`, and `change-map.md` — project-local templates.
 6. `docs/architecture.md` — if missing, create a clearly marked draft from the interview; list unknowns as open questions. Never present it as approved.
 7. `docs/stages/stage-0-baseline.md` — standard/heavy only; current facts, what is missing, Stage 0 acceptance and exit conditions.
